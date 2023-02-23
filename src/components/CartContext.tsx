@@ -106,6 +106,9 @@ export function ShoppingCartProvider({ children }: CartProviderProps) {
             <h1 className='site-header'>Shopping Cart</h1>
             <div className='flex justify-center'>
                 <div className=' w-[90%] flex justify-center flex-wrap h-full my-32 gap-16'>
+                    {products.length === 0 && (
+                        <h1 className='text-2xl text-black'>Loading...</h1>
+                    )}
                     {products.map((product: Product) => (
                         <SingleProduct
                             title={product.title}
