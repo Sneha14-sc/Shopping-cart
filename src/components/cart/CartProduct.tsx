@@ -1,28 +1,43 @@
-import React from 'react'
-import cart_icon from '../../assets/cart-icon.png';
+import { Product, useShoppingCart } from "../CartContext";
 
-const CartProduct = () => {
+type Props = {
+  item: Product;
+};
+
+const CartProduct = ({ item }: Props) => {
+  const { removeFromCart, decreaseItem, increaseItem } = useShoppingCart();
+
   return (
-    <div className='flex justify-between items-start border-t-2 border-zinc-700 mx-2 p-2 shadow-lg'>
-                            <div className='flex justify-start'>
-                                <img src={cart_icon} className="w-20 h-24" alt="product-img" />
-                                <div className='p-4 text-gray-500'>
-                                <h6 className='text-white text-lg'>Product-name</h6>
-                                <h6>product-desc</h6>
-                                <h5>Quantity: 1</h5>
-                                </div>
-                                
-                            </div>
-                            <div>
-                                <button className='font-bold right-5 absolute text-black hover:text-white'>X</button><br/>
-                                <h2 className='p-2 text-yellow-500 font-semibold'>$ 10.90</h2>
-                                <div>
-                                    <button className='ml-2 px-2 bg-gray-700 hover:bg-gray-900'>-</button>
-                                    <button className='mr-2 px-2 bg-gray-900 hover:bg-gray-700'>+</button>
-                                </div>
-                            </div>
-                        </div>
-  )
-}
+    <div className="cart-item">
+      <div className="flex w-3/4">
+        <img src={item.image} className="w-20 h-24" alt="product-img" />
+        <div className="p-4 text-gray-500">
+          <h6 className="text-white">{item.title}</h6>
+          <h5>Quantity: {item.quantity}</h5>
+        </div>
+      </div>
+      <div className="flex flex-col items-end">
+        <button
+          className="font-bold text-black hover:text-white"
+          onClick={() => removeFromCart(item.id)}
+        > X
+        </button>
+        <h2 className="p-2 text-yellow-500 font-semibold">$ {item.price}</h2>
+        <div>
+          <button
+            className="ml-2 px-2 bg-gray-900  hover:bg-gray-700"
+            onClick={() => decreaseItem(item.id)}
+          > -
+          </button>
+          <button
+            className="mr-2 px-2 bg-gray-900 hover:bg-gray-700"
+            onClick={() => increaseItem(item)}
+          > +
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default CartProduct
+export default CartProduct;

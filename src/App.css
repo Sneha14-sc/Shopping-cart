@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -38,4 +39,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.w-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.site-header{
+  @apply flex justify-center text-4xl font-extrabold mt-10 text-red-500
+}
+
+.cart-hidden-icon{
+  @apply fixed top-1 right-1 z-10 items-end  bg-black w-16 h-16 p-2 hover:opacity-80
+}
+
+.items-count{
+  @apply absolute top-10 px-1.5 text-sm font-bold rounded-full bg-yellow-300 shadow-lg
+}
+
+.cart-view{
+  @apply flex flex-col fixed top-1 right-1 z-10 text-white w-full md:w-2/5  bg-[#16181c] h-full
+}
+
+.cross-to-hide{
+  @apply flex items-start bg-stone-800 py-2 px-4 w-10 font-extrabold shadow-xl hover:opacity-80
+}
+
+.checkout-section{
+  @apply inline-block absolute z-10 bottom-0 bg-[#2f323a] shadow-2xl w-full  px-4
+}
+
+.checkout-button{
+  @apply my-4 p-4 bg-zinc-900 w-full hover:bg-black font-semibold tracking-widest
+}
+
+.cart-item{
+  @apply flex justify-between items-start border-t-2 border-zinc-700 mx-2 p-2 shadow-lg
 }
